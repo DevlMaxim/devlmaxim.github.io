@@ -1,0 +1,77 @@
+#top_block{
+	border: 0.5px solid #48AAE6;
+    position: absolute;
+    width: 212px;
+    height: 212px;
+    padding: 2px;
+	left: 60px;
+    top: 60px;
+}
+.block{
+	width:50px;
+	height:50px;
+	background-color: #48AAE6;
+	position: absolute;
+}
+#del_c{
+	width:50px;
+	height:50px;
+	position:absolute;
+	text-align: center;
+    line-height: 41px;
+	background-color:#B20000;
+	border:0;
+    font-size: 28px;
+    color: white;
+	left:63px;
+	display:none;
+	transition: 0.5s;
+}
+#del_r{
+	width:50px;
+	height:50px;
+	position:absolute;
+	text-align: center;
+    line-height: 41px;
+	background-color:#B20000;
+	border:0;
+    font-size: 28px;
+    color: white;
+	top:63px;
+	display:none;
+	transition: 0.5s;
+}
+#del_r:hover,#del_c:hover{
+	background-color:#CA4C49;
+	cursor: pointer;
+}
+.add{
+	width:50px;
+	height:50px;
+	background-color:F3A500;
+	position:absolute;
+	text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+    color: white;
+}
+#add_r{
+	left:64px;
+	top:280px;
+	border: 0;
+	transition: background 0.5s ease;
+}
+#add_r:hover{
+	background-color:#F6C052;
+	cursor: pointer;
+}
+#add_c{
+	left:280px;
+	top:64px;
+	border: 0;
+	transition: background 0.5s ease;
+}
+#add_c:hover{
+	background-color:#F6C052;
+	cursor: pointer;
+}
