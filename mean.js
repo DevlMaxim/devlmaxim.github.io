@@ -7,9 +7,6 @@
 					add.insertAdjacentHTML('beforeEnd','<div class="block" id="r_'+ (i+1) +'_c_'+(j+1)+'" style="left: '+(3+ (53*j))+'px; top:'+(3+(53*i))+'px;" onmouseover="hover('+ (i+1) +','+(j+1)+')" ></div>');
 					}
 				}
-				var all_block = document.getElementById('all_block'); //Рисуем рамку c width and height 321px
-				all_block.style.width = '321px';
-				all_block.style.height = '321px';
 			}
 			function add_rClick(button){ //Обработка кнопки "Добавить строку"
 				var new_row = document.getElementById('top_block');
