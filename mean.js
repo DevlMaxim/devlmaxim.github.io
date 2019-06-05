@@ -73,7 +73,7 @@ class Сube {
         neededRow.id= 'row'+(this.rows+1);
         add.appendChild(neededRow);
         let i = this.rows;
-		for(let j=0; j<this.column; j++){
+	for(let j=0; j<this.column; j++){
             let addBlock = document.createElement('div');
             addBlock.className='size-block block';
             addBlock.addEventListener('mouseover', () => {this.visibleDelButton(i, j);});
