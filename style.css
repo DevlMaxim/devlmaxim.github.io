@@ -1,66 +1,57 @@
-#top_block{
+#top_block {
 	border: 0.5px solid #48AAE6;
     position: absolute;
-    width: 212px;
-    height: 212px;
-    padding: 2px;
+    padding: 1px 2px 2px 1px;;
 	left: 60px;
     top: 60px;
 }
-.block{
-	width:50px;
+.size-block {
+    width:50px;
 	height:50px;
+}
+.block {
 	background-color: #48AAE6;
-	position: absolute;
+	position: relative;
+    margin: 1px;
+    display: inline-block;
 }
-.del{
-	width:50px;
-	height:50px;
-	position:absolute;
-	text-align: center;
-    line-height: 41px;
-	background-color:#B20000;
-	border:0;
-    font-size: 28px;
-    color: white;
-	display:none;
-	transition: 0.5s;
-}
-#del_c {
-	left:63px;
-}
-#del_r{
-	top:63px;
-}
-#del_r:hover,#del_c:hover{
-	background-color:#CA4C49;
-	cursor: pointer;
-}
-.add{
-	width:50px;
-	height:50px;
-	background-color:F3A500;
-	position:absolute;
-	text-align: center;
-    line-height: 50px;
+.buttons {
+    position:absolute;
+    border:0;
     font-size: 24px;
     color: white;
-	border: 0;
+    cursor: pointer;
+}
+.del {
+	background-color:#B20000;
+	transition: all 0.5s;
+    display:none;
+}
+#del_c {
+	left: 1px;
+    top: -52px;
+}
+#del_r {
+    top: 2px;
+    left: -52px;
+}
+#del_r:hover,
+#del_c:hover {
+	background-color:#CA4C49;
+}
+.add {
+	background-color:#F3A500;
 	transition: background 0.5s ease;
 }
-#add_r{
-	left:64px;
-	top:280px;
+#add_r {
+	top: 2px; 
+    right: -51px;
 }
-#add_r:hover{
+#add_c {
+	bottom: -51px; 
+    left:2px;
+}
+#add_r:hover,
+#add_c:hover {
 	background-color:#F6C052;
-	cursor: pointer;
-}
-#add_c{
-	left:280px;
-	top:64px;
-}
-#add_c:hover{
-	background-color:#F6C052;
-	cursor: pointer;
 }

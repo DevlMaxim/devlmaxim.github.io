@@ -4,12 +4,12 @@
 		<link href='style.css' rel='stylesheet' type='text/css'>
 		<script src="mean.js"></script>
 	</head>
-	<body onload="start_point()" onmousemove="block_output(this)">
-		<input id="del_r" class="del" value="-" type="button" onclick="del_rClick(this)" onmouseout="leave_button(this)">
-		<input id="del_c" class="del" value="-" type="button" onclick="del_cClick(this)" onmouseout="leave_button(this)">
-		<div id="top_block">
-		</div>
-		<input id="add_r" class="add" value="+" type="button" onclick="add_rClick(this)">
-		<input id="add_c" class="add" value="+" type="button" onclick="add_cClick(this)">
+	<body>
+        <script>
+        (function(){
+        const startPaint = new Сube(4,4);
+            startPaint.paintCube();
+        }());
+        </script>
 	</body>
 </html>
