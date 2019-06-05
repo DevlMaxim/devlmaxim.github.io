@@ -1,17 +1,17 @@
 #top_block {
-	border: 0.5px solid #48AAE6;
+    border: 0.5px solid #48AAE6;
     position: absolute;
     padding: 1px 2px 2px 1px;;
-	left: 60px;
+    left: 60px;
     top: 60px;
 }
 .size-block {
     width:50px;
-	height:50px;
+    height:50px;
 }
 .block {
-	background-color: #48AAE6;
-	position: relative;
+    background-color: #48AAE6;
+    position: relative;
     margin: 1px;
     display: inline-block;
 }
@@ -23,12 +23,12 @@
     cursor: pointer;
 }
 .del {
-	background-color:#B20000;
-	transition: all 0.5s;
+    background-color:#B20000;
+    transition: all 0.5s;
     display:none;
 }
 #del_c {
-	left: 1px;
+    left: 1px;
     top: -52px;
 }
 #del_r {
@@ -37,21 +37,21 @@
 }
 #del_r:hover,
 #del_c:hover {
-	background-color:#CA4C49;
+    background-color:#CA4C49;
 }
 .add {
-	background-color:#F3A500;
-	transition: background 0.5s ease;
+    background-color:#F3A500;
+    transition: background 0.5s ease;
 }
 #add_r {
-	top: 2px; 
+    top: 2px; 
     right: -51px;
 }
 #add_c {
-	bottom: -51px; 
+    bottom: -51px; 
     left:2px;
 }
 #add_r:hover,
 #add_c:hover {
-	background-color:#F6C052;
+   background-color:#F6C052;
 }
