@@ -1,9 +1,9 @@
-#top_block {
+.main_block {
 	border: 0.5px solid #48AAE6;
-    position: absolute;
-    padding: 1px 2px 2px 1px;;
-	left: 60px;
-    top: 60px;
+    position: relative;
+    padding: 1px 2px 2px 1px;
+    margin: 60px 60px 110px;
+    width: fit-content;
 }
 .size-block {
     width:50px;
@@ -27,31 +27,31 @@
 	transition: all 0.5s;
     display:none;
 }
-#del_c {
-	left: 1px;
+.del_c {
+	left: 2px;
     top: -52px;
 }
-#del_r {
+.del_r {
     top: 2px;
     left: -52px;
 }
-#del_r:hover,
-#del_c:hover {
+.del_r:hover,
+.del_c:hover {
 	background-color:#CA4C49;
 }
 .add {
 	background-color:#F3A500;
 	transition: background 0.5s ease;
 }
-#add_r {
+.add_r {
 	top: 2px; 
     right: -51px;
 }
-#add_c {
+.add_c {
 	bottom: -51px; 
     left:2px;
 }
-#add_r:hover,
-#add_c:hover {
+.add_r:hover,
+.add_c:hover {
 	background-color:#F6C052;
 }
