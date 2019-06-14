@@ -3,111 +3,109 @@ class Square {
         this.rows = rows;
         this.column = column;
         this.paintCube();
-        this.addColumnButton; //Кнопка добавления столбцов
-        this.addRowButton; //Кнопка добавления строк
-        this.delColumnButton; //Кнопка удаления столбцов
-        this.delRowButton; //Кнопка удаления строк
+        this.interval = 2;
+        this.blockAndInterval = 52;
     }
     paintCube() { //Начальная отрисовка квадрата
-        let add = document.createElement('div');
-        add.className = 'main_block';
-        add.addEventListener('mouseleave', () => {this.timerForDelButton(add);});
-        document.body.appendChild(add);
+        this.add = document.createElement('div');
+        this.add.className = 'main_block';
+        this.add.addEventListener('mouseleave', () => {this.timerForDelButton();});
+        document.body.appendChild(this.add);
         for (let i = 0; i < this.rows; i++) {
-            let neededRow = document.createElement('div');
-            add.appendChild(neededRow);
+            this.neededRow = document.createElement('div');
+            this.add.appendChild(this.neededRow);
             for (let j = 0; j < this.column; j++) {
-                this.createBlockElement('div', 'size-block block', neededRow, i, j, add);
+                this.createBlockElement(i, j);
             }
         }
-        this.addRowButton = this.createTableElement('button', 'size-block buttons add add_c', () => { this.addRow(add); }, '+', add);
-        this.addColumnButton = this.createTableElement('button', 'size-block buttons add add_r', () => { this.addColumn(add); }, '+', add);
-        this.delColumnButton = this.createTableElement('button', 'size-block buttons del del_c', () => { this.delColumn(add); }, '-', add);
-        this.delRowButton = this.createTableElement('button', 'size-block buttons del del_r', () => { this.delRow(add); }, '-', add);
+        this.addRowButton = this.createTableElement('size-block buttons add add_c', () => { this.addRow(); }, '+');
+        this.addColumnButton = this.createTableElement('size-block buttons add add_r', () => { this.addColumn(); }, '+');
+        this.delColumnButton = this.createTableElement('size-block buttons del del_c', () => { this.delColumn(); }, '-');
+        this.delRowButton = this.createTableElement('size-block buttons del del_r', () => { this.delRow(); }, '-');
     }
-    createBlockElement(elementType, className, neededRow, positionX, positionY, add) { //Создание блоков
-        let addBlock = document.createElement(elementType);
-        addBlock.className = className;
-        addBlock.addEventListener('mouseover', () => {this.showDelButton(positionX, positionY, add);});
-        neededRow.appendChild(addBlock);
+    createBlockElement(positionX, positionY) { //Создание блоков
+        let addBlock = document.createElement('div');
+        addBlock.className = 'size-block block';
+        addBlock.addEventListener('mouseover', () => {this.showDelButton(positionX, positionY);});
+        this.neededRow.appendChild(addBlock);
     }
-    createTableElement(elementType, className, handler, value, add) { //Создание кнопок-управления
-        let addButton = document.createElement(elementType);
+    createTableElement(className, handler, value) { //Создание кнопок-управления
+        let addButton = document.createElement('button');
         addButton.className = className;
         addButton.innerHTML = value;
         addButton.addEventListener('click', handler, false);  
-        add.appendChild(addButton);
+        this.add.appendChild(addButton);
         return addButton;
     }
-    timerForDelButton(add) { //таймер исчезновения кнопок удаления
+    timerForDelButton() { //таймер исчезновения кнопок удаления
         let timerId = setTimeout(()=>{this.hideDelButton();}, 100);
-        add.addEventListener('mouseenter', () => {clearTimeout(timerId);});
+        this.add.addEventListener('mouseenter', () => {clearTimeout(timerId);});
     }
     hideDelButton() { //Скрытие кнопок удаления
         this.delColumnButton.style.display = 'none';
         this.delRowButton.style.display = 'none';
     }
-    showDelButton(positionX, positionY, add) { //Отображение кнопок удаления и их позиционирование 
-        if(add.children[1].children[0]){
+    showDelButton(positionX, positionY) { //Отображение кнопок удаления и их позиционирование 
+        if(this.add.children[1].children[0]) {
             this.delRowButton.style.display = 'block';
-            this.delRowButton.style.top = 2+(52*positionX)+'px';
-        }else
+            this.delRowButton.style.top = this.interval+(this.blockAndInterval*positionX)+'px';
+        } else
             this.delRowButton.style.display = 'none';
-        if(add.children[0].children[1]){
+        if(this.add.children[0].children[1]) {
             this.delColumnButton.style.display = 'block';
-            this.delColumnButton.style.left = 2+(52*positionY)+'px';
-        }else
+            this.delColumnButton.style.left = this.interval+(this.blockAndInterval*positionY)+'px';
+        } else
             this.delColumnButton.style.display = 'none';
     }
-    addRow(add) { //Обработка кнопки "Добавить строку"
+    addRow() { //Обработка кнопки "Добавить строку"
         let neededRow = document.createElement('div');
-        add.insertBefore(neededRow, add.children[this.rows]);
+        this.add.insertBefore(neededRow, this.add.children[this.rows]);
         let i = this.rows;
-	for(let j=0; j<this.column; j++){
+	for(let j=0; j<this.column; j++) {
             let addBlock = document.createElement('div');
             addBlock.className='size-block block';
-            addBlock.addEventListener('mouseover', () => {this.showDelButton(i, j, add);});
+            addBlock.addEventListener('mouseover', () => {this.showDelButton(i, j);});
             neededRow.appendChild(addBlock);
         }
         this.rows++;
     }
-    addColumn(add) { //Обработка кнопки "Добавить столбец"
+    addColumn() { //Обработка кнопки "Добавить столбец"
         let j = this.column;
-        for(let i = 0; i<this.rows; i++){
-            let numberRow = add.children[i];
+        for(let i = 0; i<this.rows; i++) {
+            let numberRow = this.add.children[i];
             let addBlock = document.createElement('div');
             addBlock.className = 'size-block block';
-            addBlock.addEventListener('mouseover', () => {this.showDelButton(i, j, add);});
+            addBlock.addEventListener('mouseover', () => {this.showDelButton(i, j);});
             numberRow.appendChild(addBlock);
         }
         this.column++;
     }
-    delColumn(add) { //Обработка кнопки "Удалить столбец"
+    delColumn() { //Обработка кнопки "Удалить столбец"
        let positionButton = this.delColumnButton.style.left;
         positionButton = positionButton.substring(0, positionButton.indexOf('p'));
-        positionButton = (positionButton-2)/52;
+        positionButton = (positionButton-this.interval)/this.blockAndInterval;
         this.column--;
-        for(let i = 0; i<this.rows; i++){
-            let div = add.children[i].children[positionButton];
+        for(let i = 0; i<this.rows; i++) {
+            let div = this.add.children[i].children[positionButton];
             div.parentNode.removeChild(div);
-            for(let j = positionButton; j<this.column; j++){
-                div = add.children[i].children[j];
-                div.addEventListener('mouseover', () => {this.showDelButton(i, j, add);});
+            for(let j = positionButton; j<this.column; j++) {
+                div = this.add.children[i].children[j];
+                div.addEventListener('mouseover', () => {this.showDelButton(i, j);});
             }
         }
         this.hideDelButton(); //После клика скрываем кнопки удаления
     }
-    delRow(add) { //Обработка кнопки "Удалить строку"
+    delRow() { //Обработка кнопки "Удалить строку"
         let positionButton = this.delRowButton.style.top;
         positionButton = positionButton.substring(0, positionButton.indexOf('p'));
-        positionButton = (positionButton-2)/52;
-        let div = add.children[positionButton];
+        positionButton = (positionButton-this.interval)/this.blockAndInterval;
+        let div = this.add.children[positionButton];
         div.parentNode.removeChild(div);
         this.rows--;
-        for(let i = positionButton; i<this.rows; i++){
-            for(let j = 0; j<this.column; j++){
-                div = add.children[i].children[j];
-                div.addEventListener('mouseover', () => {this.showDelButton(i, j, add);});
+        for(let i = positionButton; i<this.rows; i++) {
+            for(let j = 0; j<this.column; j++) {
+                div = this.add.children[i].children[j];
+                div.addEventListener('mouseover', () => {this.showDelButton(i, j);});
             }
         }
         this.hideDelButton(); //После клика скрываем кнопки удаления
